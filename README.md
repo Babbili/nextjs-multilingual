@@ -17,16 +17,32 @@ module.exports = {
 }
 ```
 
+With the above configuration `en`, `fr` will be available to be routed to, and en is the default locale. If you have a `pages/blog.tsx` the following urls would be available:
+```
+  /blog
+  /fr/blog
+```
+
+Create a **`locales`** folder in the root directory and add `en.json` and `fr.json` files to include all your translations for each language in JSON format
+
+
+Acess the locale information from `NextRouter`
+```
+import useRouter from 'next/router'
+
+const { locale, locales, defaultLocale } = useRouter()
+```
+<br />
 
 
 ## Getting Started
 
-First, run the development server:
-
+First, install dependecies then run the development server:
+```
+npm install
+```
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
