@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { headerPropsType, tType } from '../types'
 // next/router  https://nextjs.org/docs/api-reference/next/router
 import { useRouter } from 'next/router'
@@ -13,11 +13,9 @@ const Header: React.FC<headerPropsType> = ( headerProps: headerPropsType) => {
     const router = useRouter()
     // import current locale, all configured locales from NextRouter
     const { locale, locales } = router
-    const otherLocales = locales?.map(elem => {
-        if(elem !== locale)
-        return elem
-    })
-    console.log(otherLocales)
+    
+    let otherLocales: string[] | undefined = locales?.filter(elem => elem != locale && elem != undefined)
+
 
     return(
         <header>
