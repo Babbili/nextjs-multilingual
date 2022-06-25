@@ -1,6 +1,4 @@
 import type { NextPage } from 'next'
-import type { ComponentProps } from 'react'
-
 import Head from 'next/head'
 // next/router  https://nextjs.org/docs/api-reference/next/router
 import { useRouter } from 'next/router'
