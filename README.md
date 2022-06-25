@@ -1,4 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Js Internationalized Routing ( Multilingual Feature )
+
+><small>This is a [Next.js](https://nextjs.org/) project bootstrapped with [`npx create-next-app@latest --ts`](https://nextjs.org/docs/basic-features/typescript)  with TypeScript support</small>
+
+<br />
+
+Next.js has built-in support for [internationalized (i18n) routing](https://nextjs.org/docs/advanced-features/i18n-routing) via `next/router`
+
+
+Add the i18n config to your `next.config.js` file
+```
+module.exports = {
+  i18n: {
+    locales: ['en', 'fr'], // include all configured locales
+    defaultLocale: 'en',
+  },
+}
+```
+
+
 
 ## Getting Started
 
