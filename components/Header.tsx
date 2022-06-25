@@ -13,9 +13,11 @@ const Header: React.FC<headerPropsType> = ( headerProps: headerPropsType) => {
     const router = useRouter()
     // import current locale, all configured locales from NextRouter
     const { locale, locales } = router
-    const otherLocales = locales?.filter(elem => {
-        elem != locale
+    const otherLocales = locales?.map(elem => {
+        if(elem !== locale)
+        return elem
     })
+    console.log(otherLocales)
 
     return(
         <header>
@@ -28,7 +30,13 @@ const Header: React.FC<headerPropsType> = ( headerProps: headerPropsType) => {
                 </li>
                 {
                     otherLocales?.map(elem => {
-                        return <li>{ elem }</li>
+                        return(
+                            <li key={elem}>
+                                <Link href={'/'} locale={elem}>
+                                    <a>{elem}</a>
+                                </Link>
+                            </li>
+                        )
                     })
                 }
             </ul>
