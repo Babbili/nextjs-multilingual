@@ -17,21 +17,32 @@ module.exports = {
 }
 ```
 
-With the above configuration `en`, `fr` will be available to be routed to, and en is the default locale. If you have a `pages/blog.tsx` the following urls would be available:
+With the above configuration `en`, `fr` will be available to be routed to, and en is the default locale ( Next Js auto detect user's prefered locale in `Accept-Language` header ). If you have a `pages/blog.tsx` the following urls would be available:
 ```
   /blog
   /fr/blog
 ```
 
-Create a **`locales`** folder in the root directory and add `en.json` and `fr.json` files to include all your translations for each language in JSON format
-
-
-Acess the locale information from `NextRouter`
+Access the locale information from `NextRouter`
 ```
 import useRouter from 'next/router'
-
 const { locale, locales, defaultLocale } = useRouter()
 ```
+
+
+Create a **`locales`** folder in the root directory and add `en.json` and `fr.json` files to include all your translations for each language in JSON format
+```
+import en from '../locales/en.json'
+import fr from '../locales/fr.json'
+
+// assign t as either of the translation json files localted in '../locales' according to the current locale
+let t = locale === 'en' ? en : fr
+
+return(
+  <h1>{ t.title }</h1>
+)
+```
+
 <br />
 
 
