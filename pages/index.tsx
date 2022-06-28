@@ -2,12 +2,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 // next/router  https://nextjs.org/docs/api-reference/next/router
 import { useRouter } from 'next/router'
-import Header from '../components/Header'
 import en from '../locales/en.json'
 import fr from '../locales/fr.json'
 import styles from '../styles/Home.module.css'
 import { tType } from '../types'
-import { headerPropsType } from '../types'
 
 const Home: NextPage = () => {
 
@@ -18,11 +16,6 @@ const Home: NextPage = () => {
   // assign t as either of the translation json files localted in '../locales' according to the current locale
   let t: tType = locale === 'en' ? en : fr
 
-  const headerProps: headerPropsType = {
-    t,
-    styles
-  }
-
   return (
     <div className={styles.container}>
       <Head>
@@ -31,11 +24,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header {...headerProps} />
       <main className={styles.main}>
       </main>
 
-      <footer className={styles.footer}></footer>
     </div>
   )
 }

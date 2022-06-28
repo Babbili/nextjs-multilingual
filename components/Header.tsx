@@ -1,14 +1,14 @@
 import React, { useRef } from 'react'
-import { headerPropsType, tType } from '../types'
+import { layoutPropsType, tType } from '../types'
 // next/router  https://nextjs.org/docs/api-reference/next/router
 import { useRouter } from 'next/router'
 // next/link  https://nextjs.org/docs/api-reference/next/link
 import Link from 'next/link'
 
 
-const Header: React.FC<headerPropsType> = ( headerProps: headerPropsType) => {
-    // import t, styles from header props
-    const { t, styles } = headerProps
+const Header: React.FC<layoutPropsType> = ( layoutProps: layoutPropsType) => {
+    // import t, styles from layout props
+    const { t, styles } = layoutProps
 
     const langSelector = useRef<HTMLUListElement>(null)
     const otherlang = useRef<HTMLAnchorElement>(null)
