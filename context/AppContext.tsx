@@ -13,7 +13,7 @@ const { locale } = router
 let t: tType = locale === 'en' ? en : fr
 
 // create app context to retrieve t value across the app 
-const Context: React.Context<tType> = createContext<tType>(t)
+const Context: React.Context<tType> = createContext<tType>(t )
 
 // create context provider 
 export const ContextProvider: React.FC<any> = ({ children }) => {
