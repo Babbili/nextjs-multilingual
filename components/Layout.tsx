@@ -1,21 +1,15 @@
 import React from 'react'
-// next/router  https://nextjs.org/docs/api-reference/next/router
-import { useRouter } from 'next/router'
-import en from '../locales/en.json'
-import fr from '../locales/fr.json'
-import { tType } from '../types'
 import { layoutPropsType } from '../types'
+// import app context
+import { useAppContext } from '../context/AppContext'
+import { ContextProvider } from '../context/AppContext'
 import Header from './Header'
 import styles from '../styles/Home.module.css'
 
 const Layout: React.FC<any> = ({ children }) => {
 
-    const router = useRouter()
-    // import current locale from NextRouter
-    const { locale } = router
-  
-    // assign t as either of the translation json files localted in '../locales' according to the current locale
-    let t: tType = locale === 'en' ? en : fr
+    // import t from AppContext
+    const { t } = useAppContext()
   
     const layoutProps: layoutPropsType = {
       t,
@@ -23,11 +17,13 @@ const Layout: React.FC<any> = ({ children }) => {
     }
 
     return(
-        <div className={styles.app}>
-            <Header {...layoutProps} />
-            <main>{ children }</main>
-            <footer></footer>
-        </div>
+        <ContextProvider>
+            <div className={styles.app}>
+                <Header {...layoutProps} />
+                <main>{ children }</main>
+                <footer></footer>
+            </div>
+        </ContextProvider>
     )
 }
 export default Layout
