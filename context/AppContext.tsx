@@ -25,6 +25,6 @@ export const ContextProvider: React.FC<any> = ({ children }) => {
 
 
 export function useAppContext() {
-  return useContext(Context)
+  return useContext<tType>(Context)
 }
 
