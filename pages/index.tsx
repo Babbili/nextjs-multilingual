@@ -1,20 +1,16 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 // next/router  https://nextjs.org/docs/api-reference/next/router
-import { useRouter } from 'next/router'
-import en from '../locales/en.json'
-import fr from '../locales/fr.json'
+// import { useRouter } from 'next/router'
+import { useAppContext } from '../context/AppContext'
+// import en from '../locales/en.json'
+// import fr from '../locales/fr.json'
 import styles from '../styles/Home.module.css'
-import { tType } from '../types'
+// import { tType } from '../types'
 
 const Home: NextPage = () => {
 
-  const router = useRouter()
-  // import current locale from NextRouter
-  const { locale } = router
-
-  // assign t as either of the translation json files localted in '../locales' according to the current locale
-  let t: tType = locale === 'en' ? en : fr
+  const t = useAppContext()
 
   return (
     <div className={styles.container}>
