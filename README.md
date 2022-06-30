@@ -1,5 +1,7 @@
 # Next Js Internationalized Routing ( Multilingual Feature )
 
+<img src="./public/103207nexti18n.png" width="100%" height="auto" alt="nextjs-i18n">
+
 ><small>This is a [Next.js](https://nextjs.org/) project bootstrapped with [`npx create-next-app@latest --ts`](https://nextjs.org/docs/basic-features/typescript)  with TypeScript support</small>
 
 <br />
@@ -48,7 +50,7 @@ return(
 
 ## Getting Started
 
-First, install dependecies then run the development server:
+First, install dependencies then run the development server:
 ```
 npm install
 ```
