@@ -1,11 +1,16 @@
 import type { NextPage } from 'next'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import clientPromise from '../utils/dbConnect'
 import { useAppContext } from '../context/AppContext'
 import styles from '../styles/Home.module.css'
+import { tType } from '../types'
 
-const Home: NextPage = () => {
+const Home: NextPage<{ data: tType}> = ({ data }) => {
 
   const t = useAppContext()
+
+  console.log('article', data.article)
 
   return (
     <div className={styles.container}>
@@ -23,3 +28,18 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const locale = context.locale || 'en'
+  const client = await clientPromise
+  const db = client.db('next')
+  const appData = await db.collection(locale).find().toArray()
+  const data = appData[0].app_data
+
+  return {
+    props: { data }
+  }
+  
+}
