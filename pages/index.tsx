@@ -1,12 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-// next/router  https://nextjs.org/docs/api-reference/next/router
-// import { useRouter } from 'next/router'
 import { useAppContext } from '../context/AppContext'
-// import en from '../locales/en.json'
-// import fr from '../locales/fr.json'
 import styles from '../styles/Home.module.css'
-// import { tType } from '../types'
 
 const Home: NextPage = () => {
 
