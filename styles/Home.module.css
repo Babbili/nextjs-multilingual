@@ -7,6 +7,7 @@
 }
 .container {
   padding: 0 2rem;
+  max-width: 980px;
 }
 
 /* ==== Header ====  */
@@ -50,6 +51,11 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+}
+.main p {
+  padding: 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 1rem;
 }

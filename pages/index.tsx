@@ -25,6 +25,7 @@ const Home: NextPage<{ data: tType}> = ({ data }) => {
       </Head>
 
       <main className={styles.main}>
+        <p>{ data.article }</p>
       </main>
 
     </div>
@@ -42,7 +43,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   // await MongoDB clientPromis
   const client = await clientPromise
-  const db = client.db('next') // call MongoDB database 'next'
+  const db = client.db('next') // call MongoDB database 'next' which has two collections 'en' and 'fr'
+  // each collection has a document 'app_data' contains the data translated according to locale
+
   // set appData according to the current locale to be one of the 2 collections in database 'en' or 'fr'
   const appData = await db.collection(locale).find().toArray()
   const data = appData[0].app_data
