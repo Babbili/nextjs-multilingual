@@ -38,7 +38,7 @@ const Header: React.FC<layoutPropsType> = ( layoutProps: layoutPropsType) => {
         <header className={`${styles.header} ${styles.container}`}>
             <Link href={'https://github.com/Babbili/nextjs-multilingual'}>
                 <a>
-                    <h3>Next Js Multilingual Feature</h3>
+                    <h3>{t.logo}</h3>
                 </a>
             </Link>
             <ul className={styles.lang__selector} ref={langSelector} onMouseEnter={()=> showLangSelector()} onMouseLeave={() => hideLangSelector()}>
