@@ -1,4 +1,5 @@
 {
     "logo": "Next Js Multilingual",
-    "title": "Next Js Internationalized Routing"
+    "title": "Next Js Internationalized Routing",
+    "note": "This paragraph is retrieved from Database"
 }

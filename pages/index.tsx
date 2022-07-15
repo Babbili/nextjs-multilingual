@@ -14,8 +14,6 @@ const Home: NextPage<{ data: tType}> = ({ data }) => {
   // import t from app context
   const t = useAppContext()
 
-  console.log('article', data.article)
-
   return (
     <div className={styles.container}>
       <Head>
@@ -25,7 +23,9 @@ const Home: NextPage<{ data: tType}> = ({ data }) => {
       </Head>
 
       <main className={styles.main}>
+        <h1>{t.title}</h1>
         <p>{ data.article }</p>
+        <small>{t.note}</small>
       </main>
 
     </div>
