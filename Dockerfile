@@ -33,7 +33,7 @@ COPY . ./
 COPY --from=development /app/.next ./.next
 COPY --from=development /app/public ./public
 
-# expose port 3000 to port 3001
+# expose port 3000
 EXPOSE 3000
 # run next start
 CMD ["npm", "run", "start"]
