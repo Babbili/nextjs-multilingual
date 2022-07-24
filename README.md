@@ -10,7 +10,7 @@ Next.js has built-in support for [internationalized (i18n) routing](https://next
 
 
 Add the i18n config to your `next.config.js` file
-```
+```json
 module.exports = {
   i18n: {
     locales: ['en', 'fr'], // include all configured locales
@@ -19,21 +19,21 @@ module.exports = {
 }
 ```
 
-With the above configuration `en`, `fr` will be available to be routed to, and en is the default locale ( Next Js auto detect user's prefered locale in `Accept-Language` header ). If you have a `pages/blog.tsx` the following urls would be available:
+With the above configuration `en`, `fr` will be available to be routed to, and `en` is the default locale ( Next Js auto detect user's prefered locale in `Accept-Language` header ). If you have a `pages/blog.tsx` the following urls would be available:
 ```
   /blog
   /fr/blog
 ```
 
 Access the locale information from `NextRouter`
-```
+```jsx
 import useRouter from 'next/router'
 const { locale, locales, defaultLocale } = useRouter()
 ```
 
 
 Create a **`locales`** folder in the root directory and add `en.json` and `fr.json` files to include all your translations for each language in JSON format
-```
+```jsx
 import en from '../locales/en.json'
 import fr from '../locales/fr.json'
 
@@ -43,6 +43,61 @@ let t = locale === 'en' ? en : fr
 return(
   <h1>{ t.title }</h1>
 )
+```
+
+**`useContext` hook approach**
+
+It's better to createContext with `t` or the user preferred locale and import this value from context provider anywhere across the app
+```jsx
+//   context/AppContext.tsx
+
+import React, { createContext, useContext } from 'react'
+import { useRouter } from 'next/router'
+import en from '../locales/en.json'
+import fr from '../locales/fr.json'
+
+// create context provider 
+export const ContextProvider = ({ children }) => {
+  // import current locale from NextRouter
+  const { locale } = useRouter()
+
+  // assign t as either of the translation json files localted in '../locales' according to the current locale
+  let t = locale === 'en' ? en : fr
+  
+  // create app context to retrieve t value across the app 
+  const Context = createContext(t )
+
+  return (
+    <Context.Provider value={t}>{children}</Context.Provider>
+  )
+}
+
+export function useAppContext() {
+  const { locale } = useRouter()
+  let t = locale === 'en' ? en : fr
+  
+  // create app context to retrieve t value across the app 
+  const Context = createContext(t )
+  
+  return useContext(Context)
+}
+```
+create a [Custom App](https://nextjs.org/docs/advanced-features/custom-app) and wrap your application with the `ContextProvider`
+```tsx
+//   pages/_app.tsx
+
+import '../styles/globals.css'
+import { ContextProvider } from '../context/AppContext'
+import type { AppProps } from 'next/app'
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return(
+    <ContextProvider>
+      <Component {...pageProps} />
+    </ContextProvider>
+  )
+}
+export default MyApp
 ```
 
 <br />
