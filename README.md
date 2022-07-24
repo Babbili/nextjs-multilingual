@@ -86,7 +86,6 @@ Create a [Custom App](https://nextjs.org/docs/advanced-features/custom-app) and 
 ```tsx
 //   pages/_app.tsx
 
-import '../styles/globals.css'
 import { ContextProvider } from '../context/AppContext'
 import type { AppProps } from 'next/app'
 
