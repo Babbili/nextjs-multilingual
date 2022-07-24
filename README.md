@@ -45,9 +45,9 @@ return(
 )
 ```
 
-**`useContext` hook approach**
+### `useContext` hook approach
 
-It's better to createContext with `t` or the user preferred locale and import this value from context provider anywhere across the app
+It's better and more scalable to createContext with `t` or the user preferred locale and import this value from context provider anywhere across the app
 ```jsx
 //   context/AppContext.tsx
 
@@ -82,7 +82,7 @@ export function useAppContext() {
   return useContext(Context)
 }
 ```
-create a [Custom App](https://nextjs.org/docs/advanced-features/custom-app) and wrap your application with the `ContextProvider`
+Create a [Custom App](https://nextjs.org/docs/advanced-features/custom-app) and wrap your application with the `ContextProvider`
 ```tsx
 //   pages/_app.tsx
 
@@ -97,8 +97,25 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ContextProvider>
   )
 }
+
 export default MyApp
 ```
+now you can import `t` from App Context anywhere in the app
+```tsx
+import { useAppContext } from '../context/AppContext'
+
+const Page = () => {
+  // import t from AppContext
+  const t  = useAppContext()
+
+  return(
+    <h1>{ t.title }</h1>
+  )
+}
+
+export default Page
+```
+
 
 <br />
 
