@@ -10,7 +10,7 @@ Next.js has built-in support for [internationalized (i18n) routing](https://next
 
 
 Add the i18n config to your `next.config.js` file
-```json
+```js
 module.exports = {
   i18n: {
     locales: ['en', 'fr'], // include all configured locales
